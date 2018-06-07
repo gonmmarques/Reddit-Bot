@@ -5,9 +5,11 @@ import os
 
 reddit = praw.Reddit('bot1')
 
-
-subreddit = reddit.subreddit('soccer')
-for submission in subreddit.hot(limit=200):
-        if re.search("sporting", submission.title, re.IGNORECASE):
-            print("Bot found : ", submission.title)
+title = input("Enter your topic to search: ")
+subreddit = input("Enter your subreddit of interest: ")
+limit = int (input("Enter the limit of search in hot: "))
+subreddit = reddit.subreddit(subreddit)
+for submission in subreddit.hot(limit=limit):
+        if re.search(title, submission.title, re.IGNORECASE):
+            print("Bot found this post: ", submission.title)
         
